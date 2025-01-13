@@ -1,0 +1,45 @@
+contents of items.csv:
+Name, Weight
+Item1, 1
+Item2, 10
+Item3, 100
+Item4, 1000
+item5, 50000
+
+
+
+contents of containers.csv:
+Name, Empty Weight, Weight Capacity
+Box1, 1, 50
+Box2, 10, 500
+Box3, 50, 1000
+Box4, 100, 10000
+Box5, 500, 25000
+Box6, 1000, 50000
+Box7, 5000, 5000
+
+
+contents of multi_containers.csv:
+Name, Compartment1, Compartment2
+MultiBox1, Box1, Box2
+MultiBox2, Box3, Box4
+MultiBox3, Box5, Box6
+MultiBox4, Box7, Box8
+
+
+contents of magic_containers.csv:
+Name, Container
+MagicBox1, Box1
+MagixBox2, Box2
+MagixBox3, Box3
+MagixBox4, Box4
+
+contents of magic_multi_containers.csv:
+Name, Container
+MagicMulti1, MultiBox1
+MagicMulti2, MultiBox2
+MagicMulti3, MultiBox3
+MagicMulti4, MultiBox4
+MagicMulti5, MultiBox5
+
+

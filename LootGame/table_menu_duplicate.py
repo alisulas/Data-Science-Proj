@@ -45,14 +45,19 @@ tables = [
 ]
 
 # Task 1 Functions: List, Display, Duplicate
+
 def list_tables():
     print("\nIndex    Columns    Rows")
     print("-------  ---------  ------")
-    for i, (header, data) in enumerate(tables):
-        num_columns = len(header)
-        num_rows = len(data)
-        print(f"{i:<8} {num_columns:<9} {num_rows}")
+    for i, table in enumerate(tables):
+        if table is not None:  # Skip deleted tables
+            header, data = table
+            num_columns = len(header)
+            num_rows = len(data)
+            print(f"{i:<8} {num_columns:<9} {num_rows}")
     print()
+
+
 
 def display_table():
     while True:

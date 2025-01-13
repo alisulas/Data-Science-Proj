@@ -1,6 +1,9 @@
 from table_menu_duplicate import tables, list_tables, display_table, duplicate_table  # Import Task 1 functions
 from tabulate import tabulate
 
+
+
+
 # Task 2 Functions: Create and Delete Table
 def create_table():
     print("Available tables:")
@@ -34,21 +37,27 @@ def create_table():
         except ValueError:
             print("Please enter comma-separated numbers only.")
 
-def delete_table():
+deleted_tables = {}
+
+def delete_table(deleted_tables):
     print("Available tables:")
-    for i, (header, _) in enumerate(tables):
-        print(f"{i}: {header}")
+    for i, table in enumerate(tables):
+        if table is not None:  # Only list existing tables
+            header, _ = table
+            print(f"{i}: {header}")
     while True:
         try:
             index = int(input("Choose a table index (to delete): "))
-            if 0 <= index < len(tables):
-                tables.pop(index)
+            if 0 <= index < len(tables) and tables[index] is not None:
+                deleted_tables[index] = tables[index]
+                tables[index] = None  # Replace with None
                 print(f"Table {index} deleted successfully.")
                 break
             else:
-                print("Incorrect table index. Try again.")
+                print("Incorrect table index or table already deleted. Try again.")
         except ValueError:
             print("Please enter a valid number.")
+
 
 # Main menu for Task 2
 def main_menu():
@@ -74,7 +83,7 @@ def main_menu():
         elif choice == "4":
             create_table()
         elif choice == "5":
-            delete_table()
+            delete_table(deleted_tables)
         elif choice == "0":
             print("Exiting Task 2.")
             break

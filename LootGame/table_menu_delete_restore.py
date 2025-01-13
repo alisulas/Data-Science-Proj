@@ -33,17 +33,21 @@ def restore_table():
     if not deleted_tables:
         print("No tables are currently available for restoration.")
         return
+    print("Deleted tables:")
+    for index, (header, _) in deleted_tables.items():
+        print(f"{index}: {header}")
     while True:
         try:
-            index = int(input("Choose a table index (for restoration): "))
+            index = int(input("Choose a deleted table index (to restore): "))
             if index in deleted_tables:
-                tables.insert(index, deleted_tables.pop(index))
+                tables[index] = deleted_tables.pop(index)  # Restore to original index
                 print(f"Table {index} has been restored.")
                 break
             else:
                 print("Incorrect table index. Try again.")
         except ValueError:
             print("Please enter a valid number.")
+
 
 # Main menu for Task 3
 def main_menu():
@@ -71,7 +75,7 @@ def main_menu():
         elif choice == "4":
             create_table()
         elif choice == "5":
-            delete_table()
+            delete_table(deleted_tables)  # Pass deleted_tables here
         elif choice == "6":
             delete_column()
         elif choice == "7":
